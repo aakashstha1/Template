@@ -31,7 +31,7 @@ export const register = async (req, res) => {
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10);
-    const verificationToken = crypto.randomBytes(3).toString("hex");
+    const verificationToken = crypto.randomBytes(4).toString("hex");
 
     const user = new User({
       email,
