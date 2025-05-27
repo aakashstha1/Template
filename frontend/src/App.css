@@ -1,0 +1,12 @@
+@keyframes floatWithDelay {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.float-delay {
+  animation: floatWithDelay 4s ease-in-out infinite;
+}
