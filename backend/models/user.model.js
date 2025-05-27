@@ -15,6 +15,16 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phone: {
+      type: Number,
+    },
+    bio: {
+      type: String,
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female", "other"],
+    },
     isVerified: {
       type: Boolean,
       default: false,

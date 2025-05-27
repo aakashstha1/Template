@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import CryptoJS from "crypto-js";
+import crypto from "crypto";
 
 import User from "../models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
@@ -17,7 +17,9 @@ export const register = async (req, res) => {
 
   try {
     if (!email || !password || !name) {
-      throw new Error("All fields are required");
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields are required" });
     }
 
     const existingUser = await User.findOne({ email });
@@ -29,9 +31,7 @@ export const register = async (req, res) => {
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10);
-    const verificationToken = Math.floor(
-      100000 + Math.random() * 900000
-    ).toString();
+    const verificationToken = crypto.randomBytes(3).toString("hex");
 
     const user = new User({
       email,
@@ -42,9 +42,6 @@ export const register = async (req, res) => {
     });
 
     await user.save();
-
-    // jwt
-    generateTokenAndSetCookie(res, user._id);
 
     await sendVerificationEmail(user.email, verificationToken);
 
@@ -103,13 +100,22 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
-      throw new Error("All fields are required");
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields are required" });
     }
     const user = await User.findOne({ email });
     if (!user) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
+    }
+
+    if (!user.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: "Please verify your email before logging in",
+      });
     }
     const isPasswordValid = await bcryptjs.compare(password, user.password);
     if (!isPasswordValid) {
@@ -154,7 +160,7 @@ export const forgotPassword = async (req, res) => {
     }
 
     // Generate reset token
-    const resetToken = CryptoJS.randomBytes(20).toString("hex");
+    const resetToken = crypto.randomBytes(20).toString("hex");
     const resetTokenExpiresAt = Date.now() + 1 * 60 * 60 * 1000; // 1 hour
 
     user.resetPasswordToken = resetToken;
