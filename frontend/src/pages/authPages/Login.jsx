@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAuth } from "@/context/AuthContext";
-import { ChevronLeft, Fingerprint, Mail } from "lucide-react";
+import { ChevronLeft, Eye, EyeOff, Fingerprint, Mail } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
@@ -22,11 +24,11 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await login(inputs);
+    const res = await login(inputs);
+    if (res.success) {
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } else {
+      console.log(res.error);
     }
   };
   return (
@@ -46,7 +48,7 @@ function Login() {
           required
         />
       </div>
-      <div className="flex items-center gap-2 mt-4">
+      <div className="flex items-center gap-2 mt-4 relative">
         <Fingerprint />
 
         <Input
@@ -57,14 +59,31 @@ function Login() {
           onChange={handleChange}
           required
         />
+        <p className="cursor-pointer bg-white flex justify-end pl-2 mr-2 absolute right-0">
+          {showPassword ? (
+            <span onClick={toggleView}>
+              <Eye size={20} />
+            </span>
+          ) : (
+            <span onClick={toggleView}>
+              <EyeOff size={20} />
+            </span>
+          )}
+        </p>
       </div>
-      <p className="text-xs hover:underline cursor-pointer flex justify-end mr-2">
-        {showPassword ? (
-          <span onClick={toggleView}>hide</span>
-        ) : (
-          <span onClick={toggleView}>show</span>
-        )}
-      </p>
+      {/* <div className="flex items-center gap-8 mt-4">
+        <Label htmlFor="role">Role :</Label>
+        <RadioGroup name="role" className="flex items-center gap-5">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="role1" id="r1" />
+            <Label htmlFor="r1">Role1</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="role2" id="r2" />
+            <Label htmlFor="r2">Role2</Label>
+          </div>
+        </RadioGroup>
+      </div> */}
       <Button disabled={loading} className="w-full mt-8" onClick={handleSubmit}>
         {loading ? <HashLoader size={20} color="white" /> : " Login"}
       </Button>

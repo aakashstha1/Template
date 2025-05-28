@@ -10,6 +10,7 @@ import {
   sendWelcomeEmail,
 } from "../nodemailer/emails.js";
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // --------------------------------------------Register--------------------------------------------------
 
 export const register = async (req, res) => {
@@ -21,7 +22,12 @@ export const register = async (req, res) => {
         .status(400)
         .json({ success: false, message: "All fields are required" });
     }
-
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address.",
+      });
+    }
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -104,6 +110,14 @@ export const login = async (req, res) => {
         .status(400)
         .json({ success: false, message: "All fields are required" });
     }
+
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email address.",
+      });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
       return res
@@ -150,6 +164,13 @@ export const logout = async (req, res) => {
 
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
+
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid email address.",
+    });
+  }
   try {
     const user = await User.findOne({ email });
 
@@ -171,7 +192,7 @@ export const forgotPassword = async (req, res) => {
     // send email
     await sendPasswordResetEmail(
       user.email,
-      `${process.env.CLIENT_URL}/reset-password/${resetToken}`
+      `http://localhost:5173/auth/reset-password/${resetToken}`
     );
 
     res.status(200).json({

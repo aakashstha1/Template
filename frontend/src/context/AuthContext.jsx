@@ -22,9 +22,14 @@ export const AuthProvider = ({ children }) => {
       setUser(res?.data.user);
       localStorage.setItem("user", JSON.stringify(res?.data.user));
       toast.success(res?.data?.message || "Logged in Succesfully");
+      return { success: true, data: res.data };
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
       toast.error(error?.response?.data.message || "Failed to login!");
+      return {
+        success: false,
+        error: error?.response?.data?.message || "Failed to login",
+      };
     } finally {
       setLoading(false);
     }

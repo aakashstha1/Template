@@ -94,7 +94,6 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
 </html>
 `;
 
-
 export const WELCOME_EMAIL_TEMPLATE = `
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +116,34 @@ export const WELCOME_EMAIL_TEMPLATE = `
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
     <p>This is an automated message. Please do not reply to this email.</p>
+  </div>
+</body>
+</html>
+`;
+
+export const CONTACT_FORM_SUBMISSION_TEMPLATE = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Contact Message</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background: linear-gradient(to right, #2196F3, #0b7dda); padding: 20px; text-align: center;">
+    <h1 style="color: white; margin: 0;">New Contact Form Submission</h1>
+  </div>
+  <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <p><strong>Name:</strong> {name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Phone:</strong> {phone}</p>
+    <p><strong>Message:</strong></p>
+    <blockquote style="border-left: 4px solid #2196F3; padding-left: 10px; color: #555;">
+      {message}
+    </blockquote>
+  </div>
+  <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
+    <p>This message was sent from your website contact form.</p>
   </div>
 </body>
 </html>

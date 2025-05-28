@@ -1,7 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import axios from "axios";
-import { ChevronLeft, Fingerprint, Mail, User2 } from "lucide-react";
+import {
+  ChevronLeft,
+  Eye,
+  EyeOff,
+  Fingerprint,
+  Mail,
+  User2,
+} from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
@@ -79,7 +88,7 @@ function Register() {
       </div>
 
       {/* Password input */}
-      <div className="flex items-center gap-2 mt-4">
+      <div className="flex items-center gap-2 mt-4 relative">
         <Fingerprint />
         <Input
           type={showPassword ? "text" : "password"}
@@ -89,17 +98,52 @@ function Register() {
           onChange={handleChange}
           required
         />
+        <p className="cursor-pointer flex justify-end mr-2 absolute right-0">
+          {showPassword ? (
+            <span onClick={toggleView}>
+              <Eye size={20} />
+            </span>
+          ) : (
+            <span onClick={toggleView}>
+              <EyeOff size={20} />
+            </span>
+          )}
+        </p>
       </div>
 
-      {/* Show/hide toggle */}
-      <p className="text-xs hover:underline cursor-pointer flex justify-end mr-2">
-        {showPassword ? (
-          <span onClick={toggleView}>hide</span>
-        ) : (
-          <span onClick={toggleView}>show</span>
-        )}
-      </p>
+      {/* Role  */}
+      {/* <div className="flex items-center gap-8 mt-4">
+        <Label htmlFor="role">Role :</Label>
+        <RadioGroup name="role" className="flex items-center gap-5">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="role1" id="r1" />
+            <Label htmlFor="r1">Role1</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="role2" id="r2" />
+            <Label htmlFor="r2">Role2</Label>
+          </div>
+        </RadioGroup>
+      </div> */}
 
+      {/* Gender  */}
+      {/* <div className="flex items-center gap-8 mt-4">
+        <Label htmlFor="gender">Gender :</Label>
+        <RadioGroup id="gender" className="flex items-center gap-5">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="male" id="male" />
+            <Label htmlFor="male">Male</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="female" id="female" />
+            <Label htmlFor="female">Female</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="other" id="other" />
+            <Label htmlFor="other">Other</Label>
+          </div>
+        </RadioGroup>
+      </div> */}
       <Button className="w-full mt-8" disabled={loading} onClick={handleSubmit}>
         {loading ? <HashLoader size={20} color="white" /> : "Sign Up"}
       </Button>

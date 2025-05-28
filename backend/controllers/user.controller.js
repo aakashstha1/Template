@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import { submitMessage } from "../nodemailer/emails.js";
 import { deleteMedia, uploadMedia } from "../utils/cloudinary.js";
 
 // ----------------------------------------------Get Profile--------------------------------
@@ -50,5 +51,39 @@ export const updateProfile = async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Failed to update profile" });
+  }
+};
+
+// ----------------------------------------------Contact--------------------------------
+export const sendMsg = async (req, res) => {
+  const { name, email, phone, message } = req.body;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      success: false,
+      message: "Name, email, and message are required.",
+    });
+  }
+
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid email address.",
+    });
+  }
+
+  try {
+    await submitMessage(name, email, phone, message);
+    return res.status(200).json({
+      success: true,
+      message: "Message sent successfully!",
+    });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to send message. Please try again later.",
+    });
   }
 };

@@ -9,6 +9,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useAuth } from "@/context/AuthContext";
+import { LogOut, User } from "lucide-react";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -70,9 +71,13 @@ function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-30">
                 <NavLink to="profile">
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <User />
+                    Profile
+                  </DropdownMenuItem>
                 </NavLink>
                 <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut />
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>

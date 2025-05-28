@@ -1,5 +1,9 @@
 import express from "express";
-import { getProfile, updateProfile } from "../controllers/user.controller.js";
+import {
+  getProfile,
+  sendMsg,
+  updateProfile,
+} from "../controllers/user.controller.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 import upload from "../utils/multer.js";
 
@@ -12,5 +16,6 @@ router.put(
   upload.single("imageUrl"),
   updateProfile
 );
+router.post("/contact", sendMsg);
 
 export default router;

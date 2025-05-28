@@ -1,4 +1,5 @@
 import {
+  CONTACT_FORM_SUBMISSION_TEMPLATE,
   PASSWORD_RESET_REQUEST_TEMPLATE,
   PASSWORD_RESET_SUCCESS_TEMPLATE,
   VERIFICATION_EMAIL_TEMPLATE,
@@ -67,5 +68,23 @@ export const sendResetSuccessEmail = async (email) => {
   } catch (error) {
     console.error("Error sending reset success email:", error);
     throw new Error("Failed to send password reset success email");
+  }
+};
+
+export const submitMessage = async (name, email, phone, message) => {
+  try {
+    await transporter.sendMail({
+      from: email,
+      to: "lastsoulff01@gmail.com",
+      subject: `New contact form message from ${name}`,
+      html: CONTACT_FORM_SUBMISSION_TEMPLATE.replace("{name}", name)
+        .replace("{email}", email)
+        .replace("{phone}", phone || "N/A")
+        .replace("{message}", message),
+    });
+    console.log("Contact message email sent successfully");
+  } catch (error) {
+    console.error("Error sending contact form message:", error);
+    throw new Error("Failed to send contact form message");
   }
 };
