@@ -16,8 +16,8 @@ function Navbar() {
   const { user, logout } = useAuth();
   const getNavLinkClass = (isActive) =>
     isActive
-      ? "text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1"
-      : "text-gray-600 hover:text-indigo-600";
+      ? "text-amber-400 font-semibold border-b-2 border-amber-500 pb-1"
+      : " hover:text-indigo-600";
 
   const handleLogout = async () => {
     try {
@@ -30,13 +30,13 @@ function Navbar() {
 
   return (
     <nav>
-      <div className="max-w-7xl mx-auto mt-3 flex items-center justify-between shadow px-4 py-3 rounded-full float-delay">
+      <div className="max-w-7xl mx-auto mt-3 flex items-center justify-between shadow-lg px-4 py-3 rounded-full float-delay bg-sky-50">
         {/* Left  */}
         <div className="">
           <h1 className="text-3xl font-semibold">Logo</h1>
         </div>
         {/* middle  */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ">
           <NavLink
             to="/"
             className={({ isActive }) => getNavLinkClass(isActive)}

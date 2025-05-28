@@ -53,13 +53,14 @@ function Contact() {
         We'd love to hear from you! Please fill out the form below.
       </p>
       <div className="flex items-center justify-between">
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="w-1/2 flex items-center justify-center ">
           <Lottie
             animationData={contactAnimation}
             loop={true}
             style={{
               width: 400,
               height: 400,
+              backdropFilter: "none",
             }}
           />
         </div>

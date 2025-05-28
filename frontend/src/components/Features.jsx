@@ -16,7 +16,7 @@ function Features() {
             <a
               key={index}
               href={feature.href}
-              className="bg-white p-6 rounded-2xl shadow text-center hover:shadow-md hover:bg-gray-50 transition"
+              className="bg-white p-6 rounded-2xl shadow text-center hover:shadow-md hover:bg-gray-100 transition"
             >
               <div className="mb-4 flex justify-center">
                 <Icon className="w-8 h-8 text-blue-500" />

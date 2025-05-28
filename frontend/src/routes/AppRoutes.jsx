@@ -14,6 +14,7 @@ import Feature3 from "@/pages/features/Feature3";
 import Feature4 from "@/pages/features/Feature4";
 import Profile from "@/pages/Profile";
 import PageNotFound from "@/pages/PageNotFound";
+import DiscussionForum from "@/pages/discussion/DiscussionForum";
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function AppRoutes() {
           <Route path="f3" elaeme={<Feature3 />} />
           <Route path="f4" elaeme={<Feature4 />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="discussion" element={<DiscussionForum />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
