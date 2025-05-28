@@ -21,7 +21,7 @@ function FAQ() {
       </p>
 
       <div className="flex items-center justify-between">
-        <div className="w-1/2 flex justify-center py-10 ">
+        <div className="w-1/2 flex justify-center">
           <Accordion type="single" collapsible className="w-full max-w-2xl ">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index + 1}`}>

@@ -1,3 +1,5 @@
+import { Code, MonitorSmartphone, ShieldCheck, Zap } from "lucide-react";
+
 export const faqs = [
   {
     question: "What is your return policy?",
@@ -23,5 +25,32 @@ export const faqs = [
     question: "What payment methods do you accept?",
     answer:
       "We accept major credit cards, PayPal, Apple Pay, and Google Pay for a fast and secure checkout experience.",
+  },
+];
+
+export const features = [
+  {
+    icon: Code,
+    title: "Clean Code",
+    description: "Well-structured and scalable.",
+    href: "/f1",
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Responsive Design",
+    description: "Works on all screen sizes.",
+    href: "/f2",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure",
+    description: "Security is our priority.",
+    href: "/f3",
+  },
+  {
+    icon: Zap,
+    title: "Fast",
+    description: "Lightning-fast performance.",
+    href: "/f4",
   },
 ];

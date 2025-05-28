@@ -22,7 +22,7 @@ export const getProfile = async (req, res) => {
 // ----------------------------------------------Update Profile--------------------------------
 export const updateProfile = async (req, res) => {
   const userId = req.userId;
-  const { name, gender, bio, phone } = req.body;
+  const { name, bio, phone } = req.body;
   const imageFile = req.file;
 
   try {
@@ -40,7 +40,7 @@ export const updateProfile = async (req, res) => {
     }
 
     user.name = name || user.name;
-    user.gender = gender || user.gender;
+    // user.gender = gender || user.gender;
     user.bio = bio || user.bio;
     user.phone = phone || user.phone;
 

@@ -21,10 +21,10 @@ const userSchema = new mongoose.Schema(
     bio: {
       type: String,
     },
-    gender: {
-      type: String,
-      enum: ["male", "female", "other"],
-    },
+    // gender: {
+    //   type: String,
+    //   enum: ["male", "female", "other"],
+    // },
     isVerified: {
       type: Boolean,
       default: false,

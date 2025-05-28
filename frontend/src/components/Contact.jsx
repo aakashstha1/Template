@@ -52,7 +52,7 @@ function Contact() {
       <p className="text-gray-500 mb-6 mt-2 text-center text-sm">
         We'd love to hear from you! Please fill out the form below.
       </p>
-      <div className="flex items-center justify-between pt-8">
+      <div className="flex items-center justify-between">
         <div className="w-1/2 flex items-center justify-center">
           <Lottie
             animationData={contactAnimation}
