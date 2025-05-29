@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function JoinDiscussion() {
   const navigate = useNavigate();
   return (
-    <div className="w-full bg-blue-600 text-white p-6 rounded-2xl shadow-lg flex items-center justify-between mb-5">
+    <div className="w-full bg-blue-600 text-white p-6 rounded-2xl shadow-lg flex flex-col sm:flex-row items-center justify-between mb-5 space-y-4 sm:space-y-0">
       <div>
         <h2 className="text-2xl font-bold">Join the Discussion Forum!</h2>
         <p className="text-sm mt-2">

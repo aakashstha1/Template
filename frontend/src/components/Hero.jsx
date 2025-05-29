@@ -5,11 +5,12 @@ import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Typewriter } from "react-simple-typewriter";
+
 function Hero() {
   return (
-    <div className="w-full h-[350px] flex items-center justify-between overflow-hidden ">
+    <div className="w-full h-[350px] flex flex-col md:flex-row items-center justify-between overflow-hidden">
       {/* Text  */}
-      <div className="w-1/2 p-8 flex flex-col space-y-6">
+      <div className="w-full md:w-1/2 p-8 flex flex-col space-y-6">
         <h1 className="text-4xl font-extrabold">Welcome to Our Platform</h1>
         <h2 className="text-4xl font-semibold">
           <Typewriter
@@ -27,26 +28,20 @@ function Hero() {
           Discover amazing content and explore new opportunities with us. Use
           the search below to get started.
         </p>
-        <div className="flex items-center  justify-between gap-2 relative">
+        <div className="flex items-center justify-between gap-2 relative max-w-md">
           <Input
             type="text"
             placeholder="Search..."
-            className="rounded-full pl-6 pr-26 h-14 shadow-lg"
+            className="rounded-full pl-6 pr-26 h-14 shadow-lg w-full"
           />
-          <Button className="rounded-full h-10 absolute right-2">
-            {" "}
+          <Button className="rounded-full h-10 absolute right-2 px-4">
             <Search /> Search
           </Button>
         </div>
-
-        {/* <div className="mx-auto mt-5 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-between gap-2 rounded-full cursor-pointer">
-          <p className="text-lg font-semibold"> Explore More</p>{" "}
-          <ArrowRightCircleIcon className="w-6 h-6" />
-        </div> */}
       </div>
 
-      {/* Image  */}
-      <div className="w-1/2 flex items-center justify-center">
+      {/* Image (hidden on small screens) */}
+      <div className="hidden md:flex md:w-1/2 items-center justify-center">
         <Lottie
           animationData={heroAnimation}
           loop={true}

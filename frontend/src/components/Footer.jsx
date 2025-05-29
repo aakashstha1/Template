@@ -1,27 +1,26 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+
 function Footer() {
   return (
     <footer className="bg-gray-800 text-gray-400 text-sm py-6 mt-8">
-      <div className="max-w-7xl mx-auto px-4 flex items-center gap-40">
-        <div className="flex flex-col gap-5">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center sm:items-start gap-10 sm:gap-40">
+        <div className="flex flex-col gap-5 items-center sm:items-start">
           <h2 className="text-white text-lg font-bold">Your Logo</h2>
-          <div className="flex items-end gap-4">
-            {/* Example social icons */}
+          <div className="flex items-center gap-4">
             <a href="#" className="hover:text-white">
-              <FaTwitter className="w-5 h-5 hover:text-white" />
+              <FaTwitter className="w-5 h-5" />
             </a>
             <a href="#" className="hover:text-white">
-              <FaFacebook className="w-5 h-5 hover:text-white" />
+              <FaFacebook className="w-5 h-5" />
             </a>
             <a href="#" className="hover:text-white">
-              <FaInstagram className="w-5 h-5 hover:text-white" />
+              <FaInstagram className="w-5 h-5" />
             </a>
           </div>
         </div>
-        {/* Nav Links Grid - 2 columns */}
 
-        <nav className="w-full flex space-x-2 items-center justify-between">
+        <nav className="w-full flex flex-wrap justify-center sm:justify-between gap-4 sm:gap-2">
           <a href="#top" className="hover:text-white">
             Home
           </a>

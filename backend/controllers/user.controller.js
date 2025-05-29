@@ -87,3 +87,54 @@ export const sendMsg = async (req, res) => {
     });
   }
 };
+
+// ----------------------------------------------Search--------------------------------
+
+
+export const searchQuery = async (req, res) => {
+  try {
+    const { query = "", categories = "", sortByPrice = "" } = req.query;
+    const categoriesArray =
+      typeof categories === "string"
+        ? categories.split(",").filter(Boolean)
+        : [];
+
+    //CREATE QUERY SEARCH
+    const searchCriteria = {
+      isPublished: true,
+      $or: [
+        { courseTitle: { $regex: query, $options: "i" } },
+        { subTitle: { $regex: query, $options: "i" } },
+        { tags: { $regex: query, $options: "i" } },
+        { category: { $regex: query, $options: "i" } },
+      ],
+    };
+    // console.log("Search Criteria before adding categories:", searchCriteria);
+    //CATEGORY SELECTED
+    if (categoriesArray.length > 0) {
+      searchCriteria.category = { $in: categoriesArray };
+    }
+    // console.log("Search Criteria after adding categories:", searchCriteria);
+    //SORT ORDER
+    const sortOptions = {};
+    if (sortByPrice === "low") {
+      sortOptions.coursePrice = 1; //SORT BY PRICE IN ASCENDING ORDER
+    } else if (sortByPrice === "high") {
+      sortOptions.coursePrice = -1; //SORT BY PRICE IN DESCENDING ORDER
+    }
+    // console.log("Final Search Criteria:", searchCriteria);
+
+    let courses = await Course.find(searchCriteria)
+      .populate({ path: "creator", select: "name photoUrl" })
+      .sort(sortOptions);
+    // console.log("Courses fetched from database:", courses);
+
+    return res.status(200).json({
+      success: true,
+      courses: courses || [],
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ success: false, message: "Search failed" });
+  }
+};

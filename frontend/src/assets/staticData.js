@@ -55,151 +55,92 @@ export const features = [
   },
 ];
 
-export const posts = [
+export const disasters = [
   {
-    id: 1,
-    title: "What's your favorite frontend framework?",
-    content:
-      "I’ve been using React for a while but I’m curious about Svelte and SolidJS. What are your thoughts?",
-    replies: [
-      "React is great for ecosystem and community.",
-      "Svelte feels faster and simpler for smaller projects.",
-    ],
+    id: "earthquake",
+    name: "Earthquake",
+    phases: {
+      before: [
+        "Make sure you have a fire extinguisher, first aid kit, a battery-powered radio, a flashlight, and extra batteries at home.",
+        "Learn first aid.",
+        "Learn how to turn off the gas, water, and electricity.",
+        "Make up a plan of where to meet your family after an earthquake.",
+        "Don't leave heavy objects on shelves (they'll fall during a quake).",
+        "Anchor heavy furniture, cupboards, and appliances to the walls or floor.",
+        "Learn the earthquake plan at your school or workplace.",
+      ],
+      during: [
+        "Stay calm! If you're indoors, stay inside. If you're outside, stay outside.",
+        "If indoors, stand near the center of the building, in a doorway, or under sturdy furniture. Stay away from windows and outside doors.",
+        "If outdoors, move away from buildings, power lines, or anything that might fall.",
+        "Don't use matches, candles, or any flame.",
+        "If in a car, stop the car and stay inside until the shaking stops.",
+        "Don't use elevators.",
+      ],
+      after: [
+        "Check yourself and others for injuries. Provide first aid if needed.",
+        "Check water, gas, and electric lines for damage and shut off valves if needed.",
+        "If you smell gas, open windows, leave immediately, and report it.",
+        "Turn on the radio for information. Don’t use phones unless it’s an emergency.",
+        "Avoid damaged buildings and areas.",
+        "Wear sturdy shoes to avoid injury from glass and debris.",
+        "Stay away from beaches — tsunamis might follow.",
+        "Expect aftershocks.",
+      ],
+    },
   },
   {
-    id: 2,
-    title: "Best practices for managing state in large apps?",
-    content:
-      "What libraries or patterns are you using for state management in large React applications?",
-    replies: [
-      "Redux Toolkit has been my go-to recently.",
-      "Zustand is nice for smaller, more modular needs.",
-    ],
+    id: "flood",
+    name: "Flood",
+    phases: {
+      before: [
+        "Know your area's flood risk and plan evacuation routes.",
+        "Move important items and documents to higher ground.",
+        "Prepare an emergency kit with essentials and waterproof containers.",
+        "Listen to weather alerts and stay informed.",
+        "Avoid building in flood-prone areas if possible.",
+      ],
+      during: [
+        "Stay tuned to emergency channels for updates.",
+        "Do not walk, swim, or drive through floodwaters.",
+        "If advised to evacuate, do so immediately.",
+        "Move to higher ground or the highest level of a building.",
+        "Avoid bridges over fast-moving water.",
+      ],
+      after: [
+        "Return home only when authorities say it's safe.",
+        "Avoid floodwater — it may be contaminated or electrically charged.",
+        "Clean and disinfect everything that got wet.",
+        "Watch out for mold, insects, and debris.",
+        "Document damage for insurance and assistance claims.",
+      ],
+    },
   },
   {
-    id: 3,
-    title: "How do you structure your folders in a Next.js project?",
-    content:
-      "Looking for inspiration on organizing files/folders in scalable Next.js apps.",
-    replies: [
-      "I use a features-based structure: /features, /components, /utils.",
-      "Try grouping by domain responsibility.",
-    ],
-  },
-  {
-    id: 4,
-    title: "Tailwind CSS vs traditional CSS frameworks",
-    content:
-      "Is Tailwind worth the switch from Bootstrap or Bulma? Pros and cons?",
-    replies: [
-      "Tailwind gives you total control, but has a learning curve.",
-      "I prefer Tailwind for design consistency.",
-    ],
-  },
-  {
-    id: 5,
-    title: "TypeScript or JavaScript for new projects?",
-    content:
-      "Are you choosing TypeScript for all new projects or sticking with plain JavaScript?",
-    replies: [
-      "TypeScript helps catch bugs early.",
-      "Sometimes JS is faster to prototype with.",
-    ],
-  },
-  {
-    id: 6,
-    title: "How to optimize React app performance?",
-    content: "Any tips on improving React app load times and responsiveness?",
-    replies: [
-      "Use React.memo and useCallback wisely.",
-      "Lazy load components and images.",
-    ],
-  },
-  {
-    id: 7,
-    title: "Favorite tools for API testing?",
-    content: "Which tools do you prefer for testing REST or GraphQL APIs?",
-    replies: [
-      "Postman is my daily driver.",
-      "I love Insomnia for its UI and speed.",
-    ],
-  },
-  {
-    id: 8,
-    title: "CSS-in-JS vs traditional CSS",
-    content:
-      "What’s your take on CSS-in-JS libraries like styled-components versus regular CSS or SASS?",
-    replies: [
-      "CSS-in-JS keeps styles scoped and dynamic.",
-      "Traditional CSS is easier to debug sometimes.",
-    ],
-  },
-  {
-    id: 9,
-    title: "Using React Query in production",
-    content:
-      "Anyone using React Query for data fetching? How’s your experience?",
-    replies: [
-      "It simplifies caching and state management.",
-      "Great for server state syncing.",
-    ],
-  },
-  {
-    id: 10,
-    title: "Accessibility best practices",
-    content: "What are the must-follow accessibility guidelines for web apps?",
-    replies: [
-      "Use semantic HTML tags.",
-      "Don’t forget keyboard navigation and ARIA roles.",
-    ],
-  },
-  {
-    id: 11,
-    title: "Deploying Next.js apps",
-    content: "What’s your preferred platform to deploy Next.js applications?",
-    replies: [
-      "Vercel is the easiest and fastest.",
-      "I also like Netlify for some use cases.",
-    ],
-  },
-  {
-    id: 12,
-    title: "Monorepo or multiple repos?",
-    content:
-      "Are you managing your projects in monorepos or separate repositories?",
-    replies: [
-      "Monorepos simplify dependency sharing.",
-      "Multiple repos give better isolation.",
-    ],
-  },
-  {
-    id: 13,
-    title: "Testing React components",
-    content:
-      "Which testing library do you prefer for React: Jest, Testing Library, Cypress?",
-    replies: [
-      "React Testing Library for unit tests.",
-      "Cypress for end-to-end testing.",
-    ],
-  },
-  {
-    id: 14,
-    title: "GraphQL vs REST",
-    content:
-      "When would you choose GraphQL over REST for your API architecture?",
-    replies: [
-      "GraphQL is flexible and reduces overfetching.",
-      "REST is simpler for small projects.",
-    ],
-  },
-  {
-    id: 15,
-    title: "How do you manage CSS in big React projects?",
-    content:
-      "What strategies or tools do you use to manage styles in large React apps?",
-    replies: [
-      "CSS modules help avoid conflicts.",
-      "Using Tailwind CSS utility classes is scalable.",
-    ],
+    id: "wildfire",
+    name: "Wildfire",
+    phases: {
+      before: [
+        "Clear dry leaves and flammable materials around your home.",
+        "Create a defensible zone and trim tree branches near your roof.",
+        "Prepare a go-bag and evacuation plan.",
+        "Stay informed through alerts and warnings.",
+        "Install smoke detectors and keep tools like hoses and rakes handy.",
+      ],
+      during: [
+        "Evacuate immediately if ordered by authorities.",
+        "Wear protective clothing and cover your nose with a wet cloth.",
+        "Stay low to avoid inhaling smoke.",
+        "Keep windows and doors closed, but unlocked if you're still at home.",
+        "Turn on lights so firefighters can see your house in smoke.",
+      ],
+      after: [
+        "Return home only when it's declared safe.",
+        "Watch out for hot spots and embers.",
+        "Check your home and property for damage and hazards.",
+        "Avoid downed power lines and unstable structures.",
+        "Document all damage and contact insurance.",
+      ],
+    },
   },
 ];

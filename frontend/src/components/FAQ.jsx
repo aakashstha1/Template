@@ -20,8 +20,8 @@ function FAQ() {
         to contact us.
       </p>
 
-      <div className="flex items-center justify-between">
-        <div className="w-1/2 flex justify-center">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
+        <div className="w-full sm:w-1/2 flex justify-center">
           <Accordion type="single" collapsible className="w-full max-w-2xl ">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index + 1}`}>
@@ -32,7 +32,7 @@ function FAQ() {
           </Accordion>
         </div>
 
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="hidden sm:flex w-1/2 items-center justify-center">
           <Lottie
             animationData={faqAnimation}
             loop={true}

@@ -4,12 +4,14 @@ import React from "react";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import JoinDiscussion from "@/components/JoinDiscussion";
+import EmergencyContact from "@/components/EmergencyContact";
 
 function Home() {
   return (
-    <div className="max-w-7xl mx-auto flex flex-col">
+    <div className="max-w-7xl mx-auto flex flex-col p-5 md:p-0">
       <Hero />
       <Features />
+      <EmergencyContact />
       <FAQ />
       <JoinDiscussion />
       <Contact />

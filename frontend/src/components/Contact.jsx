@@ -52,8 +52,9 @@ function Contact() {
       <p className="text-gray-500 mb-6 mt-2 text-center text-sm">
         We'd love to hear from you! Please fill out the form below.
       </p>
-      <div className="flex items-center justify-between">
-        <div className="w-1/2 flex items-center justify-center ">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
+        {/* Hide Lottie on small screens */}
+        <div className="hidden sm:flex w-1/2 items-center justify-center">
           <Lottie
             animationData={contactAnimation}
             loop={true}
@@ -64,7 +65,8 @@ function Contact() {
             }}
           />
         </div>
-        <div className="w-1/2 flex flex-col space-y-4">
+
+        <div className="w-full sm:w-1/2 flex flex-col space-y-4">
           <div className="flex items-center gap-2">
             <User2 />
             <Input
@@ -77,7 +79,6 @@ function Contact() {
             />
           </div>
 
-          {/* Email */}
           <div className="flex items-center gap-2">
             <Mail />
             <Input
@@ -90,7 +91,6 @@ function Contact() {
             />
           </div>
 
-          {/* Phone */}
           <div className="flex items-center gap-2">
             <Phone />
             <Input
@@ -102,7 +102,6 @@ function Contact() {
             />
           </div>
 
-          {/* Message */}
           <div className="flex items-start gap-2">
             <MessageCircle className="mt-2" />
             <Textarea
@@ -115,7 +114,7 @@ function Contact() {
             />
           </div>
           <div className="flex justify-end">
-            <Button disabled={loading} onClick={handleSubmit} className="w-28">
+            <Button disabled={loading} onClick={handleSubmit} className="w-full md:w-28">
               {loading ? (
                 <HashLoader size={20} color="white" />
               ) : (

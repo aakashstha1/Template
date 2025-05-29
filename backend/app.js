@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
+import messsageRoutes from "./routes/message.route.js";
+// import http from "http";
+// import { Socket } from "socket.io";
 
 const app = express();
 
@@ -13,6 +16,11 @@ app.use(
     credentials: true,
   })
 );
+
+// const server = http.createServer(app);
+
+// const io = Socket(server);
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -23,5 +31,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/chat", messsageRoutes);
 
 export default app;

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getProfile,
+  searchQuery,
   sendMsg,
   updateProfile,
 } from "../controllers/user.controller.js";
@@ -17,5 +18,7 @@ router.put(
   updateProfile
 );
 router.post("/contact", sendMsg);
+
+router.get("/search", verifyToken, searchQuery);
 
 export default router;

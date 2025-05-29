@@ -15,6 +15,10 @@ import Feature4 from "@/pages/features/Feature4";
 import Profile from "@/pages/Profile";
 import PageNotFound from "@/pages/PageNotFound";
 import DiscussionForum from "@/pages/discussion/DiscussionForum";
+import Emergency from "@/pages/Emergency";
+import CommunityChat from "@/pages/CommunityChat";
+import Guidance from "@/pages/Guidance";
+import SearchPage from "@/pages/search/SearchPage";
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -27,6 +31,10 @@ function AppRoutes() {
           <Route path="f4" elaeme={<Feature4 />} />
           <Route path="profile" element={<Profile />} />
           <Route path="discussion" element={<DiscussionForum />} />
+          <Route path="emergency" element={<Emergency />} />
+          <Route path="chat" element={<CommunityChat />} />
+          <Route path="guidance" element={<Guidance />} />
+          <Route path="search" element={<SearchPage />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
