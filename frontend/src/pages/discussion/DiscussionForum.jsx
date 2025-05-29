@@ -1,8 +1,8 @@
-import Content from "@/components/Content";
-import EditProfile from "@/components/EditProfile";
 import React from "react";
 import CreatePost from "./CreatePost";
 import Feed from "./Feed";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import MyPosts from "./MyPosts";
 
 function DiscussionForum() {
   return (
@@ -11,7 +11,18 @@ function DiscussionForum() {
         <CreatePost />
       </div>
       <div className="w-full">
-        <Feed />
+        <Tabs defaultValue="feed" className="mt-4">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="feed">Feed</TabsTrigger>
+            <TabsTrigger value="myPosts">My Posts</TabsTrigger>
+          </TabsList>
+          <TabsContent value="feed">
+            <Feed />
+          </TabsContent>
+          <TabsContent value="myPosts">
+            <MyPosts />
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

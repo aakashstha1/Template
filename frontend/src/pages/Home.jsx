@@ -3,6 +3,7 @@ import FAQ from "@/components/FAQ";
 import React from "react";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
+import JoinDiscussion from "@/components/JoinDiscussion";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Hero />
       <Features />
       <FAQ />
+      <JoinDiscussion />
       <Contact />
     </div>
   );

@@ -1,3 +1,4 @@
+import Chatbot from "@/components/Chatbot";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React from "react";
@@ -11,6 +12,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }

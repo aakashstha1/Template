@@ -3,7 +3,7 @@ import { features } from "@/assets/staticData";
 
 function Features() {
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8" id="features">
       <h1 className="text-3xl font-bold text-center">Our Features</h1>
       <p className="text-gray-500 mb-6 mt-2 text-center text-sm">
         Discover the core strengths that make our platform reliable, fast, and

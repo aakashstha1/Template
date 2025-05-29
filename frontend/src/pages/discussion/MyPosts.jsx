@@ -5,7 +5,6 @@ import { Loader2, MessageSquarePlus, MessagesSquare } from "lucide-react";
 
 import {
   Card,
-  CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -30,7 +29,7 @@ import {
   CollapsibleContent,
 } from "@/components/ui/collapsible";
 
-const Feed = () => {
+const MyPosts = () => {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [posts, setPosts] = useState([]);
@@ -40,22 +39,23 @@ const Feed = () => {
   const [openDialog, setOpenDialog] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchMyPosts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${API_URL}/post/posts`, {
+        const res = await axios.get(`${API_URL}/post/my-posts`, {
           withCredentials: true,
         });
         setPosts(res.data.posts || []);
+        console.log(posts);
       } catch (error) {
-        console.error("Error fetching posts:", error);
-        toast.error("Failed to load posts.");
+        console.error("Error fetching my posts:", error);
+        toast.error("Failed to load your posts.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPosts();
+    fetchMyPosts();
   }, [API_URL]);
 
   const handleReplyChange = (postId, text) => {
@@ -96,7 +96,9 @@ const Feed = () => {
   return (
     <div className="flex flex-col items-center space-y-6 py-4">
       {posts.length === 0 && !loading && (
-        <div className="text-center text-gray-500">No posts available.</div>
+        <div className="text-center text-gray-500">
+          You haven't posted anything yet.
+        </div>
       )}
 
       {posts.map((post) => {
@@ -108,13 +110,13 @@ const Feed = () => {
             <div className="flex items-center gap-3 mb-2">
               <Avatar className="h-10 w-10">
                 <AvatarImage
-                  src={post?.author?.imageUrl}
+                  src={post?.author.imageUrl}
                   className="object-cover"
                 />
                 <AvatarFallback>UN</AvatarFallback>
               </Avatar>
               <p className="font-medium text-sm text-gray-800">
-                {post.author?.name || "Unknown"}
+                {post.author?.name || "You"}
               </p>
             </div>
 
@@ -182,9 +184,9 @@ const Feed = () => {
 
               <CollapsibleContent className="space-y-2 mt-3">
                 {post.replies && post.replies.length > 0 ? (
-                  post.replies.map((reply) => (
+                  post.replies.map((reply, index) => (
                     <div
-                      key={reply._id}
+                      key={reply._id || index}
                       className="rounded-md border px-3 py-2 bg-gray-50 text-sm text-gray-700"
                     >
                       <div className="flex items-center gap-2 mb-2">
@@ -196,7 +198,7 @@ const Feed = () => {
                           <AvatarFallback>U</AvatarFallback>
                         </Avatar>
                         <p className="font-medium text-sm text-gray-800">
-                          {reply?.user.name || "Anonymous"}
+                          {reply.user?.name || "Anonymous"}
                         </p>
                       </div>
                       <div className="pl-12">{reply.msg}</div>
@@ -216,4 +218,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default MyPosts;

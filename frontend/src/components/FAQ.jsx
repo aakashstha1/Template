@@ -11,7 +11,7 @@ import faqAnimation from "@/assets/lottie/faq.json";
 
 function FAQ() {
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8" id="faq">
       <h1 className="text-3xl font-bold text-center">
         Frequently Asked Questions
       </h1>

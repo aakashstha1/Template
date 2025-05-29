@@ -22,22 +22,22 @@ function Footer() {
         {/* Nav Links Grid - 2 columns */}
 
         <nav className="w-full flex space-x-2 items-center justify-between">
-          <a href="/" className="hover:text-white">
+          <a href="#top" className="hover:text-white">
             Home
           </a>
           <a href="/about" className="hover:text-white">
             About Us
           </a>
-          <a href="/services" className="hover:text-white">
+          <a href="#features" className="hover:text-white">
             Services
           </a>
           <a href="/blog" className="hover:text-white">
             Blog
           </a>
-          <a href="/contact" className="hover:text-white">
+          <a href="#contact" className="hover:text-white">
             Contact
           </a>
-          <a href="/faq" className="hover:text-white">
+          <a href="#faq" className="hover:text-white">
             FAQ
           </a>
           <a href="/faq" className="hover:text-white">

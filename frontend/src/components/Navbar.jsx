@@ -29,7 +29,7 @@ function Navbar() {
   };
 
   return (
-    <nav>
+    <nav id="top">
       <div className="max-w-7xl mx-auto mt-3 flex items-center justify-between shadow-lg px-4 py-3 rounded-full float-delay bg-sky-50">
         {/* Left  */}
         <div className="">
@@ -44,17 +44,17 @@ function Navbar() {
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/discussion"
             className={({ isActive }) => getNavLinkClass(isActive)}
           >
-            About Us
+            Discussion
           </NavLink>{" "}
-          <NavLink
+          {/* <NavLink
             to="/contact"
             className={({ isActive }) => getNavLinkClass(isActive)}
           >
             Contact
-          </NavLink>
+          </NavLink> */}
         </div>
         {/* right  */}
         <div className="flex items-center gap-2">

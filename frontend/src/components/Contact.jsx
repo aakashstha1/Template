@@ -47,7 +47,7 @@ function Contact() {
   };
 
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8" id="contact">
       <h1 className="text-3xl font-bold text-center">Contact Us</h1>
       <p className="text-gray-500 mb-6 mt-2 text-center text-sm">
         We'd love to hear from you! Please fill out the form below.
