@@ -16,9 +16,9 @@ import Profile from "@/pages/Profile";
 import PageNotFound from "@/pages/PageNotFound";
 import DiscussionForum from "@/pages/discussion/DiscussionForum";
 import Emergency from "@/pages/Emergency";
-import CommunityChat from "@/pages/CommunityChat";
 import Guidance from "@/pages/Guidance";
 import SearchPage from "@/pages/search/SearchPage";
+import ComLayout from "@/pages/community/ComLayout";
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -32,7 +32,7 @@ function AppRoutes() {
           <Route path="profile" element={<Profile />} />
           <Route path="discussion" element={<DiscussionForum />} />
           <Route path="emergency" element={<Emergency />} />
-          <Route path="chat" element={<CommunityChat />} />
+          <Route path="community-chat" element={<ComLayout />} />
           <Route path="guidance" element={<Guidance />} />
           <Route path="search" element={<SearchPage />} />
         </Route>

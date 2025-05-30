@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema(
     resetPasswordExpiresAt: Date,
     verificationToken: String,
     verificationTokenExpiresAt: Date,
+    communities: [{ type: mongoose.Schema.Types.ObjectId, ref: "Community" }],
   },
   { timestamps: true }
 );

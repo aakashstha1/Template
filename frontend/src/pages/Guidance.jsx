@@ -21,7 +21,7 @@ function Guidance() {
                 setSelectedDisaster(d);
                 scrollToDisaster(d.id);
               }}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition cursor-pointer ${
                 selectedDisaster.id === d.id
                   ? " text-blue-500"
                   : " hover:bg-blue-100 text-gray-800"

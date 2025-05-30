@@ -58,6 +58,12 @@ function Navbar() {
           >
             Guidance
           </NavLink>
+          <NavLink
+            to="/community-chat"
+            className={({ isActive }) => getNavLinkClass(isActive)}
+          >
+            Community chat
+          </NavLink>
         </div>
 
         {/* Right - hidden on small screens */}

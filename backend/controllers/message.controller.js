@@ -1,28 +1,27 @@
 import Message from "../models/message.model.js";
 
-export const getMessages = async (req, res) => {
+export const getCommunityMessages = async (req, res) => {
+  const { communityId } = req.params;
   try {
-    const messages = await Message.find({ room: req.params.room }).populate(
-      "sender",
-      "username"
-    );
+    const messages = await Message.find({ community: communityId })
+      .populate("sender", "name imageUrl")
+      .sort({ createdAt: 1 });
     res.json(messages);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching messages" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-export const postMessage = async (req, res) => {
+export const sendMessage = async (req, res) => {
+  const { senderId, communityId, content } = req.body;
   try {
-    const { room, content } = req.body;
-    const newMessage = new Message({
-      room,
+    const message = await Message.create({
+      sender: senderId,
+      community: communityId,
       content,
-      sender: req.user.id,
     });
-    await newMessage.save();
-    res.status(201).json(newMessage);
-  } catch (error) {
-    res.status(500).json({ error: "Error sending message" });
+    res.status(201).json(message);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };

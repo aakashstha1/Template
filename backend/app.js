@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
-import messsageRoutes from "./routes/message.route.js";
+import communityRoutes from "./routes/community.route.js";
 // import http from "http";
 // import { Socket } from "socket.io";
 
@@ -31,6 +31,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
-app.use("/api/chat", messsageRoutes);
+app.use("/api/community", communityRoutes);
 
 export default app;
