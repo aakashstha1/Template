@@ -5,8 +5,6 @@ import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
 import communityRoutes from "./routes/community.route.js";
-// import http from "http";
-// import { Socket } from "socket.io";
 
 const app = express();
 
@@ -16,10 +14,6 @@ app.use(
     credentials: true,
   })
 );
-
-// const server = http.createServer(app);
-
-// const io = Socket(server);
 
 app.use(express.json());
 app.use(cookieParser());

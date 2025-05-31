@@ -64,6 +64,12 @@ function Navbar() {
           >
             Community chat
           </NavLink>
+          <NavLink
+            to="/report"
+            className={({ isActive }) => getNavLinkClass(isActive)}
+          >
+            Report
+          </NavLink>
         </div>
 
         {/* Right - hidden on small screens */}

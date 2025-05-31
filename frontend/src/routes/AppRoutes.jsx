@@ -19,6 +19,7 @@ import Emergency from "@/pages/Emergency";
 import Guidance from "@/pages/Guidance";
 import SearchPage from "@/pages/search/SearchPage";
 import ComLayout from "@/pages/community/ComLayout";
+import Report from "@/pages/Report";
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -35,6 +36,7 @@ function AppRoutes() {
           <Route path="community-chat" element={<ComLayout />} />
           <Route path="guidance" element={<Guidance />} />
           <Route path="search" element={<SearchPage />} />
+          <Route path="report" element={<Report />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
